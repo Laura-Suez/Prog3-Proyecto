@@ -1,8 +1,8 @@
-import { useState } from 'react';
-import './App.css';
-import NewBook from './components/newBook/NewBook';
-import Books from './components/books/Books';
-import Login from './components/login/Login';
+import { useState } from "react";
+import "./App.css";
+import NewBook from "./components/newBook/NewBook";
+import Books from "./components/books/Books";
+import Login from "./components/login/Login";
 
 const booksInitial = [
   {
@@ -67,13 +67,20 @@ function App() {
     setBooks((prevBooks) => [newBook, ...prevBooks]);
   };
 
+  // NUEVA: Lógica para borrar por ID
+  const handleBookDeleted = (id) => {
+    setBooks((prevBooks) => {
+      return prevBooks.filter((book) => book.id !== id);
+    });
+  };
+
   return (
     <>
       <h1>Book Champions!</h1>
       <h3>Libros!</h3>
-      <Login />
+      {/* <Login /> */}
       <NewBook onBookAdded={handleBookAdded} />
-      <Books books={books} />
+      <Books books={books} onBookDeleted={handleBookDeleted} />
     </>
   );
 }
