@@ -25,7 +25,6 @@ const BookItem = ({
   const handleConfirmDelete = () => {
     console.log(`Eliminando: ${bookTitle}`);
     onDelete(id);
-    handleCloseModal();
     setShowModal(false);
   };
 
